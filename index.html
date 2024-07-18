@@ -2,558 +2,894 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ravindra Singh Rajpurohit | Software Developer</title>
-  <link rel="stylesheet" href="/assets/fonts.css">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta Tags Start ------------------------------------------------------>
+    <meta http-equiv='content-language' content='en-US'>
+    <meta name="title" content="Home - Jodhana.In">
+    <meta name="description" content="Jodhana is a cultural city located in the western part of India, in the center of Rajasthan.">
+    <meta name="keywords" content="">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jodhana.in/">
+    <meta property="og:title" content="Home - Jodhana.In">
+    <meta property="og:description" content="Jodhana is a cultural city located in the western part of India, in the center of Rajasthan.">
+    <meta property="og:image" content="/images/preview.jpg">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jodhana.in">
+    <meta property="twitter:title" content="Home - Jodhana.In">
+    <meta property="twitter:description" content="Jodhana is a cultural city located in the western part of India, in the center of Rajasthan.">
+    <meta property="twitter:image" content="/images/preview.jpg">
+    <!-------------------------------------------------------- Meta Tags End -->
+    <title>Jodhana.In</title>
 
-    body {
-      color: #2b2c48;
-      font-family: "Jost", sans-serif;
-      background-color: #203162;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      min-height: 100vh;
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
+    <!-- tab logo -->
+    <link rel="icon" type="image/x-icon" href="/images/tablogo.png">
 
-    .card {
-      max-width: 340px;
-      margin: auto;
-      overflow-y: auto;
-      position: relative;
-      z-index: 1;
-      overflow-x: hidden;
-      background-color: white;
-      display: flex;
-      transition: 0.3s;
-      flex-direction: column;
-      border-radius: 10px;
-      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
-      width:100%;
-    }
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-    .card[data-state="#about"] {
-      height: 450px;
-    }
+    <!-- swiper js cdn link -->
+    <link rel="stylesheet" href="/libs/Swiper/7.4.1/swiper-bundle.min.css" />
 
-    .card[data-state="#about"] .card-main {
-      padding-top: 0;
-    }
+    <!-- home page event section's icon cdn link  -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'> 
 
-    .card[data-state="#experience"] {
-      height: 550px;
-    }
+    <!-- product section links -->
+    <!-- <link rel='stylesheet' href='/libs/Swiper/4.3.5/css/swiper.min.css'> -->
 
-    .card.is-active .card-header {
-      height: 80px;
-    }
+    <!-- bootstrap file link
+    link href="/libs/bootstrap/5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    
+    <!-- Home section google font link -->
+    <!--link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet"-->
+   
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/style.css">
 
-    .card.is-active .card-cover {
-      height: 100px;
-      top: -50px;
-    }
-
-    .card.is-active .card-avatar {
-      transform: none;
-      left: 20px;
-      width: 50px;
-      height: 50px;
-      bottom: 10px;
-    }
-
-    .card.is-active .card-fullname,
-    .card.is-active .card-jobtitle {
-      left: 86px;
-      transform: none;
-    }
-
-    .card.is-active .card-fullname {
-      bottom: 18px;
-      font-size: 19px;
-    }
-
-    .card.is-active .card-jobtitle {
-      bottom: 16px;
-      letter-spacing: 1px;
-      font-size: 10px;
-    }
-
-    .card-header {
-      position: relative;
-      display: flex;
-      height: 200px;
-      flex-shrink: 0;
-      width: 100%;
-      transition: 0.3s;
-    }
-
-    .card-header * {
-      transition: 0.3s;
-    }
-
-    .card-cover {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      height: 160px;
-      top: -20%;
-      left: 0;
-      will-change: top;
-      background-size: cover;
-      background-position: center;
-      filter: blur(30px);
-      transform: scale(1.2);
-      transition: 0.5s;
-    }
-
-    .card-avatar {
-      width: 100px;
-      height: 100px;
-      box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-      border-radius: 50%;
-      -o-object-position: center;
-      object-position: center;
-      -o-object-fit: cover;
-      object-fit: cover;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%) translateY(-64px);
-    }
-
-    .card-fullname {
-      position: absolute;
-      bottom: 0;
-      font-size: 22px;
-      font-weight: 700;
-      text-align: center;
-      white-space: nowrap;
-      transform: translateY(-10px) translateX(-50%);
-      left: 50%;
-    }
-
-    .card-jobtitle {
-      position: absolute;
-      bottom: 0;
-      font-size: 11px;
-      white-space: nowrap;
-      font-weight: 500;
-      opacity: 0.7;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin: 0;
-      left: 50%;
-      transform: translateX(-50%) translateY(-7px);
-    }
-
-    .card-main {
-      position: relative;
-      flex: 1;
-      display: flex;
-      padding-top: 10px;
-      flex-direction: column;
-    }
-
-    .card-subtitle {
-      font-weight: 700;
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
-    .card-content {
-      padding: 20px;
-    }
-
-    .card-desc {
-      line-height: 1.6;
-      color: #636b6f;
-      font-size: 14px;
-      margin: 0;
-      font-weight: 400;
-      font-family: "DM Sans", sans-serif;
-    }
-
-    .card-social {
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      margin-bottom: 30px;
-    }
-
-    .card-social svg {
-      fill: #a5b5ce;
-      width: 16px;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .card-social a {
-      color: #8797a1;
-      height: 32px;
-      width: 32px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s;
-      background-color: rgba(93, 133, 193, 0.05);
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .card-social a:hover svg {
-      fill: #637faa;
-    }
-
-    .card-social a:last-child {
-      margin-right: 0;
-    }
-
-    .card-buttons {
-      display: flex;
-      background-color: #fff;
-      margin-top: auto;
-      position: sticky;
-      bottom: 0;
-      left: 0;
-    }
-
-    .card-buttons button {
-      flex: 1 1 auto;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      background: 0;
-      font-size: 13px;
-      border: 0;
-      padding: 15px 5px;
-      cursor: pointer;
-      color: #5c5c6d;
-      transition: 0.3s;
-      font-family: "Jost", sans-serif;
-      font-weight: 500;
-      outline: 0;
-      border-bottom: 3px solid transparent;
-    }
-
-    .card-buttons button.is-active,
-    .card-buttons button:hover {
-      color: #2b2c48;
-      border-bottom: 3px solid #8a84ff;
-      background: linear-gradient(to bottom, rgba(127, 199, 231, 0) 0%, rgba(207, 204, 255, 0.2) 44%, rgba(211, 226, 255, 0.4) 100%);
-    }
-
-    .card-section {
-      display: none;
-    }
-
-    .card-section.is-active {
-      display: block;
-      -webkit-animation: fadeIn 0.6s both;
-      animation: fadeIn 0.6s both;
-    }
-
-    @-webkit-keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translatey(40px);
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translatey(40px);
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-
-    .card-timeline {
-      margin-top: 30px;
-      position: relative;
-    }
-
-    .card-timeline:after {
-      background: linear-gradient(to top, rgba(134, 214, 243, 0) 0%, #516acc 100%);
-      content: "";
-      left: 42px;
-      width: 2px;
-      top: 0;
-      height: 100%;
-      position: absolute;
-      content: "";
-    }
-
-    .card-item {
-      position: relative;
-      padding-left: 60px;
-      padding-right: 20px;
-      padding-bottom: 30px;
-      z-index: 1;
-    }
-
-    .card-item:last-child {
-      padding-bottom: 5px;
-    }
-
-    .card-item:after {
-      content: attr(data-year);
-      width: 10px;
-      position: absolute;
-      top: 0;
-      left: 37px;
-      width: 8px;
-      height: 8px;
-      line-height: 0.6;
-      border: 2px solid #fff;
-      font-size: 11px;
-      text-indent: -35px;
-      border-radius: 50%;
-      color: rgba(134, 134, 134, 0.7);
-      background: linear-gradient(to bottom, #a0aee3 0%, #516acc 100%);
-    }
-
-    .card-item-title {
-      font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .card-item-desc {
-      font-size: 13px;
-      color: #6f6f7b;
-      line-height: 1.5;
-      font-family: "DM Sans", sans-serif;
-    }
-  </style>
 </head>
-
 <body>
-  <div class="card" data-state="#about">
-    <div class="card-header">
-      <div class="card-cover"></div>
-      <img class="card-avatar" src="/assets/image.jpg" alt="avatar" />
-      <h1 class="card-fullname">Ravindra Singh Rajpurohit</h1>
-      <h2 class="card-jobtitle">Software Developer</h2>
+    <div id="top"></div>
+
+
+    <!-- header section starts  -->
+
+<header class="header">
+
+    <a href="#" class="logo"> <i class="fas fa-mountain-sun"></i> jodhana.in - demo </a>
+
+    <nav class="navbar">
+        <div id="nav-close" class="fas fa-times"></div>
+        <a href='/'>home</a>
+        <a href='#adventure'>adventure</a>
+        <a href='#map'>map</a>
+        <a href='#blogs'>blogs</a>
+        <a href='#events'>Events</a>
+        <a href='#products'>Products</a>
+        <a href='#about'>about us</a>
+        <!-- <a href="#shop">shop</a> -->
+        <!-- <a href="#packages">packages</a> -->
+        <!-- <a href="#reviews">reviews</a> -->
+        
+    </nav>
+
+    <div class="icons">
+        <a href="#" class="fas fa-shopping-cart"></a>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="menu-btn" class="fas fa-bars"></div>
     </div>
-    <div class="card-main">
-      <div class="card-section is-active" id="about">
-        <div class="card-content">
-          <div class="card-subtitle">ABOUT</div>
-          <p class="card-desc">BCA Student with more than 1 Year of Programming Experience.
-          </p>
-          <br/>
-          <div class="card-subtitle">SKILLS</div>
-          <p class="card-desc"><b>Programming Skills</b><br/>
-          HTML, CSS, Javascript<br/>
-          PHP - Laravel framework
-          </p></br>
-          <p class="card-desc"><b>Soft Skills</b></br>
-          Teamwork, Public Speaking</p></br>
-          <div class="card-subtitle">HOBBIES</div>
-          <p class="card-desc">
-            Singing, Travelling, Reading,</br>
-            Kabaddi, Cricket, Badminton,</br>
-            Swimming, Yoga
-          </p>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- search form  -->
+
+<div class="search-form">
+
+    <div id="close-search" class="fas fa-times"></div>
+
+    <form action="#">
+        <input type="search" name="" placeholder="search here..." id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+    </form>
+</div>
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="swiper home-slider">
+
+        <div class="swiper-wrapper">
+                                                                            <!-- (#ffffff00, #000000a0) -->
+            <div class="swiper-slide">
+                <div class="box second" style="background: linear-gradient(45deg, rgba(0, 0, 0, 0.615), rgba(255, 255, 0, 0)), url(/images/bluecity.jpg) no-repeat ;">
+                    <div class="content">
+                        <span style="color:white;">Jodhana - The</span>
+                        <h3>Blue City</h3>
+                        <p style="color:white;">Jodhana is a cultural city located in the western part of India, in the center of Rajasthan. It is known for ancient temples, beautiful forts and palaces, havells and even houses that are built in vivid shades of blue.</p>
+                        <a href="#" class="hbtn">get started</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="card-social">
-          <a href="https://www.linkedin.com/in/rvrajj" rel="noreferrer noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M23.994 24v-.001H24v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07V7.976H8.489v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243V24zM.396 7.977h4.976V24H.396zM2.882 0C1.291 0 0 1.291 0 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909A2.884 2.884 0 002.882 0z" />
-            </svg></a>
-          
-          
-          <!--a href="mailto:rvrajj@gmail.com" rel="noreferrer noopener"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M14.608 12.172c0 .84.239 1.175.864 1.175 1.393 0 2.28-1.775 2.28-4.727 0-4.512-3.288-6.672-7.393-6.672-4.223 0-8.064 2.832-8.064 8.184 0 5.112 3.36 7.896 8.52 7.896 1.752 0 2.928-.192 4.727-.792l.386 1.607c-1.776.577-3.674.744-5.137.744-6.768 0-10.393-3.72-10.393-9.456 0-5.784 4.201-9.72 9.985-9.72 6.024 0 9.215 3.6 9.215 8.016 0 3.744-1.175 6.6-4.871 6.6-1.681 0-2.784-.672-2.928-2.161-.432 1.656-1.584 2.161-3.145 2.161-2.088 0-3.84-1.609-3.84-4.848 0-3.264 1.537-5.28 4.297-5.28 1.464 0 2.376.576 2.782 1.488l.697-1.272h2.016v7.057h.002zm-2.951-3.168c0-1.319-.985-1.872-1.801-1.872-.888 0-1.871.719-1.871 2.832 0 1.68.744 2.616 1.871 2.616.792 0 1.801-.504 1.801-1.896v-1.68z" />
-            </svg></a-->
-          
-          
-          <a href="https://github.com/rvrajj" target=”_blank” rel="noreferrer noopener"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" />
-            </svg></a>
-          
-          
-          <!--a href="https://github.com/rvrajj/cv/raw/main/en.pdf" rel="noreferrer noopener"><svg fill="#000000" version="1.1" id="Capa_1"
-              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 45.057 45.057"
-              xml:space="preserve">
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-              <g id="SVGRepo_iconCarrier">
-                <g>
-                  <g id="_x35_8_24_">
-                    <g>
-                      <path
-                        d="M19.558,25.389c-0.067,0.176-0.155,0.328-0.264,0.455c-0.108,0.129-0.24,0.229-0.396,0.301 c-0.156,0.072-0.347,0.107-0.57,0.107c-0.313,0-0.572-0.068-0.78-0.203c-0.208-0.137-0.374-0.316-0.498-0.541 c-0.124-0.223-0.214-0.477-0.27-0.756c-0.057-0.279-0.084-0.564-0.084-0.852c0-0.289,0.027-0.572,0.084-0.853 c0.056-0.281,0.146-0.533,0.27-0.756c0.124-0.225,0.29-0.404,0.498-0.541c0.208-0.137,0.468-0.203,0.78-0.203 c0.271,0,0.494,0.051,0.666,0.154c0.172,0.105,0.31,0.225,0.414,0.361c0.104,0.137,0.176,0.273,0.216,0.414 c0.04,0.139,0.068,0.25,0.084,0.33h2.568c-0.112-1.08-0.49-1.914-1.135-2.502c-0.644-0.588-1.558-0.887-2.741-0.895 c-0.664,0-1.263,0.107-1.794,0.324c-0.532,0.215-0.988,0.52-1.368,0.912c-0.38,0.392-0.672,0.863-0.876,1.416 c-0.204,0.551-0.307,1.165-0.307,1.836c0,0.631,0.097,1.223,0.288,1.77c0.192,0.549,0.475,1.021,0.847,1.422 s0.825,0.717,1.361,0.949c0.536,0.23,1.152,0.348,1.849,0.348c0.624,0,1.18-0.105,1.668-0.312 c0.487-0.209,0.897-0.482,1.229-0.822s0.584-0.723,0.756-1.146c0.172-0.422,0.259-0.852,0.259-1.283h-2.593 C19.68,25.023,19.627,25.214,19.558,25.389z">
-                      </path>
-                      <polygon
-                        points="26.62,24.812 26.596,24.812 25.192,19.616 22.528,19.616 25.084,28.184 28.036,28.184 30.713,19.616 28,19.616 ">
-                      </polygon>
-                      <path
-                        d="M33.431,0H5.179v45.057h34.699V6.251L33.431,0z M36.878,42.056H8.179V3h23.706v4.76h4.992L36.878,42.056L36.878,42.056z">
-                      </path>
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </svg></a-->
-          
-          <a href="/blog.html"><svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-              <g id="SVGRepo_iconCarrier">
-                <g>
-                  <rect x="293.186" y="307.184" class="st0" width="131.572" height="112.986"></rect>
-                  <rect x="87.243" y="308.893" class="st0" width="154.448" height="17.162"></rect>
-                  <rect x="87.243" y="401.298" class="st0" width="154.448" height="17.162"></rect>
-                  <rect x="87.243" y="355.1" class="st0" width="154.448" height="17.162"></rect>
-                  <path class="st0"
-                    d="M416.428,0.004H95.58C42.787,0.013,0.016,42.792,0,95.577v303.685 c0.025,62.262,50.463,112.717,112.742,112.734h286.524c62.27-0.017,112.717-50.464,112.734-112.734V95.577 C511.992,42.792,469.212,0.013,416.428,0.004z M464.805,399.262c-0.008,18.15-7.308,34.424-19.198,46.34 c-11.916,11.891-28.19,19.19-46.34,19.198H112.742c-18.15-0.009-34.433-7.308-46.348-19.198 c-11.892-11.916-19.182-28.19-19.198-46.34V118.696h417.61V399.262z">
-                  </path>
-                  <path class="st0"
-                    d="M88.96,267.908h34.583c19.71,0,31.642-8.581,31.642-26.548c0-10.852-6.167-18.368-12.2-20.648v-0.268 c6.034-3.352,10.592-9.519,10.592-19.432c0-14.489-9.251-24.268-29.086-24.268H88.96c-0.796,0-1.332,0.536-1.332,1.34v88.475 C87.628,267.371,88.164,267.908,88.96,267.908z M107.338,193.495c0-0.528,0.251-0.804,0.804-0.804h13.944 c7.5,0,11.925,3.888,11.925,10.584c0,6.712-4.425,10.734-11.925,10.734h-13.944c-0.553,0-0.804-0.268-0.804-0.804V193.495z M107.338,229.955c0-0.528,0.251-0.795,0.804-0.795h15c8.061,0,12.343,4.424,12.343,11.405c0,7.097-4.282,11.396-12.343,11.396h-15 c-0.553,0-0.804-0.276-0.804-0.812V229.955z">
-                  </path>
-                  <path class="st0"
-                    d="M181.516,267.908h59.404c0.796,0,1.332-0.536,1.332-1.349v-14.874c0-0.813-0.536-1.341-1.332-1.341h-40.224 c-0.544,0-0.804-0.268-0.804-0.812v-71.447c0-0.804-0.528-1.34-1.341-1.34h-17.036c-0.805,0-1.332,0.536-1.332,1.34v88.475 C180.183,267.371,180.711,267.908,181.516,267.908z">
-                  </path>
-                  <path class="st0"
-                    d="M292.708,269.374c15.963,0,28.558-7.366,33.251-22.115c2.011-6.301,2.539-11.396,2.539-24.938 c0-13.542-0.528-18.637-2.539-24.939c-4.693-14.739-17.288-22.114-33.251-22.114c-15.956,0-28.558,7.375-33.243,22.114 c-2.02,6.302-2.556,11.397-2.556,24.939c0,13.542,0.536,18.637,2.556,24.938C264.149,262.009,276.752,269.374,292.708,269.374z M278.361,202.746c2.011-6.301,6.847-10.055,14.346-10.055c7.508,0,12.335,3.754,14.346,10.055 c1.073,3.226,1.474,7.634,1.474,19.576c0,11.924-0.402,16.357-1.474,19.567c-2.011,6.31-6.838,10.072-14.346,10.072 c-7.5,0-12.335-3.763-14.346-10.072c-1.064-3.21-1.475-7.643-1.475-19.567C276.886,210.38,277.297,205.972,278.361,202.746z">
-                  </path>
-                  <path class="st0"
-                    d="M387.961,269.374c16.081,0,28.685-8.171,33.251-22.794c1.6-4.952,2.263-12.46,2.263-20.505v-7.517 c0-0.788-0.536-1.333-1.332-1.333h-31.366c-0.813,0-1.349,0.545-1.349,1.333v12.888c0,0.796,0.536,1.332,1.349,1.332h12.326 c0.536,0,0.805,0.277,0.805,0.805c0,3.879-0.403,6.703-1.073,8.991c-1.878,6.026-7.777,9.386-14.614,9.386 c-7.91,0-12.88-3.763-14.891-10.072c-1.064-3.21-1.466-7.643-1.466-19.567c0-11.941,0.402-16.223,1.466-19.441 c2.011-6.302,6.847-10.19,14.631-10.19c7.5,0,12.05,3.218,15.678,9.385c0.269,0.67,0.939,0.939,1.886,0.67l14.338-6.033 c0.796-0.402,0.947-1.206,0.536-2.019c-4.299-10.995-15.419-19.425-32.439-19.425c-16.232,0-28.835,7.375-33.527,22.114 c-2.012,6.302-2.556,11.397-2.556,24.939c0,13.542,0.545,18.637,2.556,24.938C359.126,262.009,371.73,269.374,387.961,269.374z">
-                  </path>
-                </g>
-              </g>
-            </svg></a>
-            
-          
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- category/adventure section starts  -->
+
+<section class="category adventure" id="adventure">
+
+    <h1 class="heading">adventure Activities</h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="/images/paragliding.jpg" alt="">
+            <h3>Paragliding</h3>
+            <p>...</p>
+            <a class='btn' href='#adventure.html#para'>read more</a>
         </div>
-      </div>
-      <div class="card-section" id="experience">
-        <div class="card-content">
-          <div class="card-subtitle">WORK EXPERIENCE</div>
-          <div class="card-timeline">
-            
-            <div class="card-item" data-year="now">
-              <div class="card-item-title">BCA from <span>GD Memorial College</span></div>
-              <div class="card-item-desc">Languages: C, C++ <br>
-              Workshop: AI, Web Development
-              </div>
+
+        <div class="box">
+            <img src="/images/helicopter.jpg" alt="">
+            <h3>Helicopter Tours</h3>
+            <p>...</p>
+            <a class='btn' href='#adventure.html#heli'>read more</a>
+        </div>
+
+        <div class="box">
+            <img src="/images/balloon.jpg" alt="">
+            <h3>Hot Air Ballooning</h3>
+            <p>...</p>
+            <a class='btn' href='#adventure.html#balloon'>read more</a>
+        </div>
+
+        <div class="box">
+            <img src="/images/safa2.jpg" alt="">
+            <h3>Wild life Safari</h3>
+            <p>...</p>
+            <a class='btn' href='#adventure.html#safa'>read more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- category/adventure section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- map section starts  -->
+<section class="map" id="map">
+  
+   <div class="image">
+     <img src="/images/map2.2.jpg" class="center" alt="">
+    </div>
+    
+
+    <div class="content">
+        <h3>Explore the blue city</h3>
+        <p> Whether traveling with your significant other or planning a vacay with your family, Jodhpur won’t disappoint you!</p>
+        <a class='btn' href='#map.html'>read more</a>
+    </div>
+</section>
+
+<!-- map section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- blogs section starts  -->
+
+<section class="blogs" id="blogs">
+
+    <h1 class="heading"> our daily posts </h1>
+
+    <div class="swiper blogs-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <img src="/images/mehrangarh.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 1st Jan, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin </a>
+                </div>
+                <h3>Mehrangarh Fort</h3>
+                <p>...</p>
+                <a href="#" class="btn">read more</a>
             </div>
-            
-            <div class="card-item" data-year="2023">
-              <div class="card-item-title">Learner at <span>Excel One Stop Solutions</span></div>
-              <div class="card-item-desc">
-                Languages: PHP<br>
-                Framework: Laravel<br>
-                Website : www.a2zsuvidhaa.com
-              </div>
+
+
+            <div class="swiper-slide slide">
+                <img src="/images/toorjikajhalra.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 1st Jan, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin </a>
+                </div>
+                <h3>Toorji Ka Jhalara</h3>
+                <p>... </p>
+                <a href="#" class="btn">read more</a>
             </div>
-            
-            
-            <div class="card-item" data-year="2019">
-              <div class="card-item-title">Junior Assistant at <span>CTC Infotech</span></div>
-              <div class="card-item-desc">Location: Gole Building, Jodhpur<br>
-              Work: Laptop/PC/Printer Sales & Services
-              </div>
+
+
+            <div class="swiper-slide slide">
+                <img src="/images/ghantaghar.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 1st Jan, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin </a>
+                </div>
+                <h3>Ghanta Ghar</h3>
+                <p>...</p>
+                <a class='btn' href='#blogs.html#lotus'>read more</a>
             </div>
-            
-            
-            
-            
-            <div class="card-item" data-year="2018">
-              <div class="card-item-title">Xiaomi Brand Promoter at <span>Kheteshwar Telecom & Electronics</span></div>
-              <div class="card-item-desc">Location: Mangammanapalya, Bangalore<br>
-              Work: Smartphone/Tab Sales & Services<br>
-              Instagram: <a href="https://www.instagram.com/kheteshwartelecom" rel="noreferrer noopener">@kheteshwartelecom</a>
-              </div>
+
+
+            <div class="swiper-slide slide">
+                <img src="/images/ghanshyamjimandir.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 1st Jan, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin </a>
+                </div>
+                <h3>Ghanshyamji Mandir</h3>
+                <p>...</p>
+                <a href="#" class="btn">read more</a>
             </div>
-            
-            
-            <div class="card-item" data-year="2017">
-              <div class="card-item-title">Store Manager at <span>Kheteshwar Dryfruits</span></div>
-              <div class="card-item-desc">Location: Parvat Patiya, Surat<br>
-              Work: Dryfruit Sales & Gift Packing<br>
-                Instagram : <a href="https://www.instagram.com/kheteshwar_dry_fruits" rel="noreferrer noopener">@kheteshwar_dry_fruits</a>
-              </div>
+
+
+            <div class="swiper-slide slide">
+                <img src="/images/navchokiya.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 1st Jan, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin </a>
+                </div>
+                <h3>Navchokiya</h3>
+                <p>...</p>
+                <a href="#" class="btn">read more</a>
             </div>
-            
-            
-            
-            <div class="card-item" data-year="2017">
-              <div class="card-item-title">Worked at <span>Bhawani Computers INC</span></div>
-              <div class="card-item-desc">Location: SP Road, Bangalore<br>
-              Work: Laptop/PC Sales & Services
+
+            <div class="swiper-slide slide">
+                <img src="/images/afri.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 1st Jan, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin </a>
+                </div>
+                <h3>Arid Forest Research Institute</h3>
+                <p>...</p>
+                <a href="#" class="btn">read more</a>
             </div>
+
+
+            <div class="swiper-slide slide">
+                <img src="/images/machia.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 1st Jan, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by admin </a>
+                </div>
+                <h3>Machia Biological Park</h3>
+                <p>... </p>
+                <a href="#" class="btn">read more</a>
             </div>
-            
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- blogs section ends -->
+
+
+
+
+
+
+
+<!-- event home page section starts -->
+
+<section class="event" id="events">
+    <h1 class="heading1">Upcoming Events</h1>
+    <div class="eventrow">
+     
+     
+  
+    <div class="example-2 card">
+      <div class="wrapper" style="background: url(/images/rakshabandhan.jpg) center/cover no-repeat;">
+        <div class="head">
+          <div class="date">
+            <span class="day">19</span>
+            <span class="month">Aug</span>
+            <span class="year">2024</span>
+          </div>
+          <ul class="menu-content">
+            <li>
+              <a href="#" class="fa fa-bookmark-o"></a>
+            </li>
+            <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
+            <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
+          </ul>
+        </div>
+        <div class="data">
+          <div class="Econtent">
+            <span class="author">Admin</span>
+            <h1 class="title"><a href="#">Raksha Bandhan</a></h1>
+            <p class="text1">Raksha Bandhan symbolizes the unmatched bond of love, care and respect. It is observed on the last day of the month of Shravana, which typically falls in August. ...</p>
+            <a class='Ebutton' href='#events.html#vesak'>Read more</a>
           </div>
         </div>
       </div>
-
-
-      <div class="card-section" id="contact">
-        <div class="card-content">
-          <div class="card-subtitle">CONTACT</div>
-          <p class="card-desc" style="width:100%">Coming Soon..
-          </p>
-          <br/>
-          
+    </div>
+  
+     <div class="example-2 card">
+      <div class="wrapper" style="background: linear-gradient(#ffffff00, #00000082), url(/images/janmashtami.jpg) center/cover no-repeat;" >
+        <div class="head">
+          <div class="date">
+            <span class="day">26</span>
+            <span class="month">Aug</span>
+            <span class="year">2024</span>
+          </div>
+          <ul class="menu-content">
+            <li>
+              <a href="#" class="fa fa-bookmark-o"></a>
+            </li>
+            <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
+            <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
+          </ul>
+        </div>
+        <div class="data">
+          <div class="Econtent">
+            <span class="author">Admin</span>
+            <h1 class="title"><a href="#">Krishna Janmashtami</a></h1>
+            <p class="text1">Krishna Janmashtami is a religious and cultural festival in Jodhpur. It is celebrated on the day of Amavasya in the month of Shravan (May)...</p>
+            <a class='Ebutton' href='#events.html#awurudu'>Read more</a>
+          </div>
         </div>
       </div>
-
-
-      
-      <div class="card-buttons">
-        <button data-section="#about" class="is-active">ABOUT</button>
-        <!--button data-section="#experience">EXPERIENCE</button-->
-        <button data-section="#contact">CONTACT</button>
+    </div>
+  
+    <!--  -->
+    
+    <div class="example-2 card">
+      <div class="wrapper" style="background: linear-gradient(#ffffff00, #00000082), url(/images/vijayadashami.jpg) center/cover no-repeat;">
+        <div class="head">
+          <div class="date">
+            <span class="day">12</span>
+            <span class="month">Oct</span>
+            <span class="year">2024</span>
+          </div>
+          <ul class="menu-content">
+            <li>
+              <a href="#" class="fa fa-bookmark-o"></a>
+            </li>
+            <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
+            <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
+          </ul>
+        </div>
+        <div class="data">
+          <div class="Econtent">
+            <span class="author">Admin</span>
+            <h1 class="title"><a href="#">Vijayadashami</a></h1>
+            <p class="text1">The festival commemorates the victory of Lord Rama over the demon king Ravana. On the day of Dussehra, sculptures of Ravana and his brothers Meghnad and Kumbhakarna are burnt in public squares</p>
+            <a class='Ebutton' href='#events.html#asala'>Read more</a>
+          </div>
+        </div>
       </div>
     </div>
+    
+    
+    <div class="example-2 card">
+      <div class="wrapper" style="background: url(/images/holi.jpg) center/cover no-repeat;">
+        <div class="head">
+          <div class="date">
+            <span class="day">14</span>
+            <span class="month">Mar</span>
+            <span class="year">2025</span>
+          </div>
+          <ul class="menu-content">
+            <li>
+              <a href="#" class="fa fa-bookmark-o"></a>
+            </li>
+            <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
+            <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
+          </ul>
+        </div>
+        <div class="data">
+          <div class="Econtent">
+            <span class="author">Admin</span>
+            <h1 class="title"><a href="#">Holi</a></h1>
+            <p class="text1">Holi is the time that truly brings everyone together as the local families open their doors to the public, allowing them to participate in the Holi celebrations hosted by them. Holi celebration in Rajasthan attracts locals and tourists from India and across the world who truly want to experience the “Rangeela Rajasthan” (colorful Rajasthan) – a characteristic of this colorful state which is further enhanced during Holi.</p>
+            <a class='Ebutton' href='#events.html#vesak'>Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    <div class="example-2 card">
+      <div class="wrapper" style="background: url(/images/gangour.jpg) center/cover no-repeat;">
+        <div class="head">
+          <div class="date">
+            <span class="day">14</span>
+            <span class="month">Mar</span>
+            <span class="year">2025</span>
+          </div>
+          <ul class="menu-content">
+            <li>
+              <a href="#" class="fa fa-bookmark-o"></a>
+            </li>
+            <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
+            <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
+          </ul>
+        </div>
+        <div class="data">
+          <div class="Econtent">
+            <span class="author">Admin</span>
+            <h1 class="title"><a href="#">Gangour</a></h1>
+            <p class="text1">Gangaur festival is celebrated in honor of Goddess Gauri, Lord Shiva's wife, who exemplifies strength, bravery. Women pray for their spouse's well-being and single women seek a compatible husband. The festival showcases Rajasthani culture and the devotion of women towards their husbands.</p>
+            <a class='Ebutton' href='#events.html#vesak'>Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
   </div>
-  <script>
-    const buttons = document.querySelectorAll(".card-buttons button");
-    const sections = document.querySelectorAll(".card-section");
-    const card = document.querySelector(".card");
+  
+  
+  
+  </section>
 
-    const handleButtonClick = e => {
-      const targetSection = e.target.getAttribute("data-section");
-      const section = document.querySelector(targetSection);
-      targetSection !== "#about" ?
-        card.classList.add("is-active") :
-        card.classList.remove("is-active");
-      card.setAttribute("data-state", targetSection);
-      sections.forEach(s => s.classList.remove("is-active"));
-      buttons.forEach(b => b.classList.remove("is-active"));
-      e.target.classList.add("is-active");
-      section.classList.add("is-active");
-    };
+<!-- event home page section ends -->
 
-    buttons.forEach(btn => {
-      btn.addEventListener("click", handleButtonClick);
-    });
-  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Tradional Products section start -->
+
+<section class="products" id="products">
+    <h1 class="heading1">Tradional Products</h1>
+<div class="wrapper">
+  <!-- <div class="background"> -->
+    <!-- <img src="bg.jpg" alt=""> -->
+    <!-- <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1537132206/news-slider/background.webp" alt=""> -->
+  <!-- </div> -->
+  <div class="item-bg"></div>
+
+  <div class="news-slider">
+    <div class="news-slider__wrp swiper-wrapper">
+      <div class="news-slider__item swiper-slide">
+        <a class='news__item' href='#products.html#mask'>
+          <!-- <div class="news-date">
+            <span class="news-date__title">24</span>
+            <span class="news-date__txt">May</span>
+          </div> -->
+          <div class="news__title">
+            Traditional Mask
+          </div>
+
+          <p class="news__txt">
+            At a time when the people worshipped trees and animals, masks were an indispensable part of Jodhpur rituals and ceremonies. 
+          </p>
+
+          <div class="news__img">
+            <!-- <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1537132205/news-slider/item-2.webp" alt="news"> -->
+            <img src="/images/mask.jpg" alt="">
+          </div>
+        </a>
+      </div>
+
+      <div class="news-slider__item swiper-slide">
+        <a class='news__item' href='#products.html#spices'>
+          <!-- <div class="news-date">
+            <span class="news-date__title">25</span>
+            <span class="news-date__txt">May</span>
+          </div> -->
+          <div class="news__title">
+            Tradional Spices
+          </div>
+
+          <p class="news__txt">
+            Herbs and spices have been a major influence on Eastern cuisine since times immemorial. Spices heighten the flavour and aroma of a dish. 
+          </p>
+
+          <div class="news__img">
+            <img src="/images/spices.jpg" alt="">
+            <!-- <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1537132205/news-slider/item-3.webp" alt="news"> -->
+          </div>
+        </a>
+      </div>
+
+      <div class="news-slider__item swiper-slide">
+        <a class='news__item' href='#products.html#food'>
+          <!-- <div class="news-date">
+            <span class="news-date__title">26</span>
+            <span class="news-date__txt">May</span>
+          </div> -->
+          <div class="news__title">
+            Traditional Foods
+          </div>
+
+          <p class="news__txt">
+            Rice and curry is the Jodhpur staple, though various kinds of bread, both roti style flatbreads and even loaves of...
+          </p>
+
+          <div class="news__img">
+            <!-- <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1537132205/news-slider/item-4.webp" alt="news"> -->
+            <img src="/images/food.jpg" alt="">
+          </div>
+        </a>
+      </div>
+
+      <div class="news-slider__item swiper-slide">
+        <a class='news__item' href='#products.html#goods'>
+          <!-- <div class="news-date">
+            <span class="news-date__title">27</span>
+            <span class="news-date__txt">May</span>
+          </div> -->
+          <div class="news__title">
+            Industrial Goods
+          </div>
+
+          <p class="news__txt">
+            The land is home to a lot of resourceful industries that manufacture a wide range of product varieties...
+          </p>
+
+          <div class="news__img">
+            <!-- <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1537132205/news-slider/item-2.webp" alt="news"> -->
+            <img src="/images/clothes.jpg" alt="">
+          </div>
+        </a>
+      </div>
+
+      <div class="news-slider__item swiper-slide">
+        <a class='news__item' href='#products.html#art'>
+          <!-- <div class="news-date">
+            <span class="news-date__title">28</span>
+            <span class="news-date__txt">May</span>
+          </div> -->
+          <div class="news__title">
+            Arts And Crafts
+          </div>
+
+          <p class="news__txt">
+            Colour, creativity and commerce abound when it comes to arts and crafts in Jodhpur. And Pottery is of Jodhpur's oldest crafts.
+          </p>
+
+          <div class="news__img">
+            <!-- <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1537132205/news-slider/item-5.webp" alt="news"> -->
+            <img src="/images/art.jpg" alt="">
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="news-slider__ctr">
+
+      <div class="news-slider__arrows">
+        <button class="news-slider__arrow news-slider-prev">
+          <span class="icon-font">
+            <svg class="picon icon-arrow-left"><use xlink:href="#icon-arrow-left"></use></svg>
+          </span>
+        </button>
+        <button class="news-slider__arrow news-slider-next">
+          <span class="icon-font">
+            <svg class="picon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg>
+          </span>
+        </button>
+      </div>
+
+      <div class="news-slider__pagination"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<svg hidden="hidden">
+  <defs>
+    <symbol id="icon-arrow-left" viewBox="0 0 32 32">
+      <title>arrow-left</title>
+      <path d="M0.704 17.696l9.856 9.856c0.896 0.896 2.432 0.896 3.328 0s0.896-2.432 0-3.328l-5.792-5.856h21.568c1.312 0 2.368-1.056 2.368-2.368s-1.056-2.368-2.368-2.368h-21.568l5.824-5.824c0.896-0.896 0.896-2.432 0-3.328-0.48-0.48-1.088-0.704-1.696-0.704s-1.216 0.224-1.696 0.704l-9.824 9.824c-0.448 0.448-0.704 1.056-0.704 1.696s0.224 1.248 0.704 1.696z"></path>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 32 32">
+      <title>arrow-right</title>
+      <path d="M31.296 14.336l-9.888-9.888c-0.896-0.896-2.432-0.896-3.328 0s-0.896 2.432 0 3.328l5.824 5.856h-21.536c-1.312 0-2.368 1.056-2.368 2.368s1.056 2.368 2.368 2.368h21.568l-5.856 5.824c-0.896 0.896-0.896 2.432 0 3.328 0.48 0.48 1.088 0.704 1.696 0.704s1.216-0.224 1.696-0.704l9.824-9.824c0.448-0.448 0.704-1.056 0.704-1.696s-0.224-1.248-0.704-1.664z"></path>
+    </symbol>
+  </defs>
+</svg>
+<!-- partial -->
+  
+    
+</section>
+
+<!-- Tradional Products section end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- reviews section starts  -->
+
+<section class="reviews" id="reviews">
+
+    <h1 class="heading">Tourist's reviews</h1>
+
+    <div class="swiper review-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <p class="text">Fantastic! Really great country with hospitable people who are excited to show you around. The places we went to were really varied...Jodhpur has everything...coasts, wildlife, mountains, culture, food....and so much more.</p>
+                <div class="user">
+                    <img src="/images/pic-1.png" alt="">
+                    <div class="info">
+                        <h3>David Thomsan</h3>
+                        <span>United Kingdom</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">I have been to Jodhpur for 2 times now and I really love the city and the people there. We help some poor people there who are now close family! We travelled around the city with a great guide named Lalit.</p>
+                <div class="user">
+                    <img src="/images/pic-2.png" alt="">
+                    <div class="info">
+                        <h3>Simona Alixa</h3>
+                        <span>New Zealand</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">If you want to explore the must-see sights of Jodhpur, but also enjoy your well-earned vacation from work, here are our suggestions on how to make the most of your days in the land of serendipity.</p>
+                <div class="user">
+                    <img src="/images/pic-3.png" alt="">
+                    <div class="info">
+                        <h3>Petra Marick</h3>
+                        <span>London</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">Jodhpur is known for its rich culture and history, with fascinating temples and tree plantations to explore. The country is home to amazing wildlife and exotic flora and fauna, and visitors can experience all of this in the biological parks.</p>
+                <div class="user">
+                    <img src="/images/pic-4.png" alt="">
+                    <div class="info">
+                        <h3>Chloe Loues</h3>
+                        <span>Korea</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">Jodhpur (historically known as Jodhana) has been called “the heart of the Rajasthan ocean” because of its shape and location.</p>
+                <div class="user">
+                    <img src="/images/pic-5.png" alt="">
+                    <div class="info">
+                        <h3>john deo</h3>
+                        <span>USA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">Jodhpur is a popular backpacker destination and known to be really cheap. We gathered a few tips for all the travelers who are really on a budget. </p>
+                <div class="user">
+                    <img src="/images/pic-6.png" alt="">
+                    <div class="info">
+                        <h3>Jing lee</h3>
+                        <span>China</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- reviews section ends -->
+
+<!-- newsletter section  -->
+
+<section class="newsletter">
+
+    <div class="content">
+        <h1 class="heading">subscirbe now</h1>
+        <p>Subscribe for our travel newsletter to receive exclusive deals, destination inspiration, and helpful tips for your next vacation. Stay informed and get the most out of your travels by subscribing to our email list today.</p>
+        <form action="#">
+            <input type="email" name="" placeholder="enter your email" id="" class="email">
+            <input type="submit" value="subscirbe" class="btn">
+        </form>
+    </div>
+
+</section>
+
+<section class="clients">
+
+    <div class="swiper clients-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide silde"><img src="/images/client-logo-1.png" alt=""></div>
+            <div class="swiper-slide silde"><img src="/images/client-logo-2.png" alt=""></div>
+            <div class="swiper-slide silde"><img src="/images/client-logo-3.png" alt=""></div>
+            <div class="swiper-slide silde"><img src="/images/client-logo-4.png" alt=""></div>
+        </div>
+    </div>
+
+</section>
+
+<!-- footer section starts  -->
+
+<section class="footer" id="about">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href='/'>home</a>
+            <a href='#adventure.html'>adventure</a>
+            <a href='#map.html'>map</a>
+            <a href='#blogs.html'>blog</a>
+            <a href='#events.html'>events</a>
+            <a href='#products.html'>products</a>
+            <a href="#about.php">about</a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#">my account</a>
+            <a href="#">my order</a>
+            <a href="#">my wishlist</a>
+            <a href="#">ask questions</a>
+            <a href="#">terms of use</a>
+            <a href="#">privacy policy</a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+            <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> mail@jodhana.in </a>
+            <a href="#"> <i class="fas fa-map"></i> Jodhpur, Rajasthan</a>
+        </div>
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="https://www.youtube.com/@jodhana_in" target="_blank"> <i class="fab fa-youtube"></i> youtube </a>
+            <a href="https://www.facebook.com/hashtag/jodhana" target="_blank"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="https://twitter.com/search?q=%23jodhana&amp;src=typed_query" target="_blank"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="https://www.instagram.com/jodhana.in_" target="_blank"> <i class="fab fa-instagram"></i> instagram </a>
+            <a href="https://www.linkedin.com/feed/hashtag/jodhana/" target="_blank"> <i class="fab fa-linkedin"></i> linkedin </a>
+            <!-- <a href="#"><i class="fab fa-github"></i> github </a> -->
+            <a href="https://www.pinterest.com/search/pins/?q=jodhana&amp;rs=typed" target="_blank"><i class="fa fa-pinterest"></i> pinterest </a>
+        </div>
+
+    </div>
+
+    <div class="credit">I♥</br>Jodhpur
+    </br></br> Copyright ©️ 2024 - all rights reserved!</div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+<!-- ------scroller to top -->
+
+<a href="#top" class="to-top">
+  <i class="fas fa-chevron-up"></i>
+</a>
+
+
+
+
+<!-- product section links -->
+<script src='/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='/libs/Swiper/4.3.5/js/swiper.min.js'></script>
+
+
+
+<script src="/libs/swiper/7.4.1/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="/js/script.js"></script>
+
+
+
+<!-- <div class="scroll-container">
+    <a href="#top">To Top</a>
+</div> -->
+
 </body>
 
 </html>
+
+
+
+
+
+
+
+
